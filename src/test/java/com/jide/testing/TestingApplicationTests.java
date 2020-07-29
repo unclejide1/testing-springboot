@@ -1,13 +1,28 @@
 package com.jide.testing;
 
+import com.jide.testing.repository.ItemRepository;
+import org.json.JSONException;
 import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.web.client.TestRestTemplate;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class TestingApplicationTests {
 
+    @Autowired
+    private TestRestTemplate restTemplate;
+
+//    @MockBean
+//    private ItemRepository repository;
+
     @Test
-    void contextLoads() {
+    void contextLoads() throws JSONException {
+       String response = this.restTemplate.getForObject("/all-items-from-database", String.class);
+
+        JSONAssert.assertEquals("[{id:10001,name:Item1,price:10,quantity:20},{id:10002},{id:10003}]", response, false);
     }
 
 }

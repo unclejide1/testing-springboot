@@ -2,6 +2,7 @@ package com.jide.testing.service;
 
 import com.jide.testing.model.Item;
 import com.jide.testing.repository.ItemRepository;
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -13,6 +14,9 @@ import org.mockito.quality.Strictness;
 
 import java.util.Arrays;
 import java.util.List;
+//import static org.hamcrest.CoreMatchers.not;
+//import static org.hamcrest.MatcherAssert.assertThat;
+//import static org.hamcrest.Matchers.is;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -40,5 +44,7 @@ class ItemBusinessServiceTest {
         assertEquals(100, items.get(0).getValue());
         assertEquals(225, items.get(1).getValue());
         assertEquals(400, items.get(2).getValue());
+
+
     }
 }
